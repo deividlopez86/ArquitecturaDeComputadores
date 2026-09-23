@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesa de Ayuda - Farmacia SaludVida</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f5f8f7;
+            color: #333;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            color: #168c70;
+            font-size: 25px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #168c70;
+        }
+
+        /* ---------- ENCABEZADO DE LA MESA DE AYUDA ---------- */
+        .hero-ayuda {
+            min-height: 380px;
+            background: linear-gradient(rgba(20,107,88,0.88), rgba(20,107,88,0.88)),
+                        url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=80");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .hero-ayuda h1 {
+            font-size: 44px;
+            margin-bottom: 15px;
+        }
+
+        .hero-ayuda p {
+            font-size: 19px;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        section {
+            padding: 70px 8%;
+        }
+
+        .titulo {
+            text-align: center;
+            color: #168c70;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 45px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* ---------- CANALES DE ATENCIÓN ---------- */
+        .canales {
+            background-color: #ffffff;
+        }
+
+        .contenedor-canales {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .canal {
+            background-color: #f5f8f7;
+            width: 260px;
+            padding: 30px 22px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .canal:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+
+        .canal img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 12px;
+        }
+
+        .canal h3 {
+            color: #168c70;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .canal p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* ---------- PREGUNTAS FRECUENTES ---------- */
+        .faq {
+            background-color: #eaf5f2;
+        }
+
+        .contenedor-faq {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .pregunta {
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+            overflow: hidden;
+        }
+
+        .pregunta-titulo {
+            padding: 18px 22px;
+            font-weight: bold;
+            color: #146b58;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .pregunta-titulo:hover {
+            background-color: #f0f7f5;
+        }
+
+        .pregunta-titulo span {
+            color: #168c70;
+            font-size: 22px;
+            transition: transform 0.3s;
+        }
+
+        .pregunta.activa .pregunta-titulo span {
+            transform: rotate(45deg);
+        }
+
+        .pregunta-respuesta {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            padding: 0 22px;
+            color: #555;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .pregunta.activa .pregunta-respuesta {
+            max-height: 400px;
+            padding: 0 22px 20px;
+        }
+
+        /* ---------- FORMULARIO DE SOPORTE ---------- */
+        .soporte {
+            background-color: #ffffff;
+        }
+
+        .formulario-soporte {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: #f5f8f7;
+            padding: 35px 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .formulario-soporte label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #146b58;
+            font-size: 14px;
+        }
+
+        .formulario-soporte input,
+        .formulario-soporte select,
+        .formulario-soporte textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+        }
+
+        .formulario-soporte textarea {
+            height: 130px;
+            resize: none;
+        }
+
+        .formulario-soporte button {
+            width: 100%;
+            padding: 13px;
+            background-color: #168c70;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .formulario-soporte button:hover {
+            background-color: #106d57;
+        }
+
+        footer {
+            background-color: #146b58;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 14px;
+            }
+
+            .hero-ayuda h1 {
+                font-size: 30px;
+            }
+
+            .hero-ayuda p {
+                font-size: 16px;
+            }
+
+            .formulario-soporte {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/2966/2966327.png" alt="Logo Farmacia SaludVida">
+            Farmacia SaludVida
+        </div>
+
+        <nav>
+            <a href="index.html#inicio">Inicio</a>
+            <a href="index.html#nosotros">Nosotros</a>
+            <a href="index.html#servicios">Servicios</a>
+            <a href="index.html#contenido">Contenido</a>
+            <a href="mesadeayuda.html">Mesa de Ayuda</a>
+            <a href="index.html#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- ENCABEZADO -->
+    <section class="hero-ayuda">
+        <div>
+            <h1>Mesa de Ayuda</h1>
+            <p>
+                Estamos aquí para acompañarte. Encuentra respuestas rápidas,
+                canales de atención y soporte personalizado para tus dudas
+                sobre medicamentos, pedidos y servicios.
+            </p>
+        </div>
+    </section>
+
+    <!-- CANALES DE ATENCIÓN -->
+    <section class="canales">
+        <h2 class="titulo">Canales de Atención</h2>
+        <p class="subtitulo">
+            Elige el medio que prefieras para comunicarte con nuestro equipo
+            de soporte. Respondemos en el menor tiempo posible.
+        </p>
+
+        <div class="contenedor-canales">
+
+            <div class="canal">
+                <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Teléfono">
+                <h3>Atención Telefónica</h3>
+                <p>
+                    Línea directa: 300 123 4567<br>
+                    Lunes a sábado de 8:00 AM a 8:00 PM.
+                </p>
+            </div>
+
+            <div class="canal">
+                <img src="https://cdn-icons-png.flaticon.com/512/542/542638.png" alt="Correo">
+                <h3>Correo Electrónico</h3>
+                <p>
+                    Escríbenos a:<br>
+                    soporte@saludvida.com<br>
+                    Respuesta en menos de 24 horas.
+                </p>
+            </div>
+
+            <div class="canal">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384055.png" alt="Chat">
+                <h3>Chat en Línea</h3>
+                <p>
+                    Conversa con un asesor en tiempo real
+                    durante nuestro horario de atención.
+                </p>
+            </div>
+
+            <div class="canal">
+                <img src="https://cdn-icons-png.flaticon.com/512/2830/2830305.png" alt="Domicilios">
+                <h3>Soporte de Domicilios</h3>
+                <p>
+                    Consulta el estado de tu pedido y coordina
+                    entregas en nuestra zona de cobertura.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES -->
+    <section class="faq">
+        <h2 class="titulo">Preguntas Frecuentes</h2>
+        <p class="subtitulo">
+            Resolvemos las dudas más comunes de nuestros clientes.
+            Haz clic en cada pregunta para ver la respuesta.
+        </p>
+
+        <div class="contenedor-faq">
+
+            <div class="pregunta">
+                <div class="pregunta-titulo">
+                    ¿Cómo puedo solicitar un domicilio?
+                    <span>+</span>
+                </div>
+                <div class="pregunta-respuesta">
+                    Puedes solicitar tu domicilio llamando a nuestra línea
+                    telefónica o escribiéndonos por correo electrónico.
+                    Indícanos tu dirección, los productos que necesitas
+                    y el horario en el que deseas recibirlos.
+                </div>
+            </div>
+
+            <div class="pregunta">
+                <div class="pregunta-titulo">
+                    ¿Qué hago si un medicamento no está disponible?
+                    <span>+</span>
+                </div>
+                <div class="pregunta-respuesta">
+                    Si un medicamento no se encuentra en existencia, puedes
+                    dejar tus datos en nuestra mesa de ayuda y te avisaremos
+                    en cuanto llegue a la farmacia. También podemos ofrecerte
+                    alternativas similares bajo orientación farmacéutica.
+                </div>
+            </div>
+
+            <div class="pregunta">
+                <div class="pregunta-titulo">
+                    ¿Puedo recibir orientación sobre el uso de un medicamento?
+                    <span>+</span>
+                </div>
+                <div class="pregunta-respuesta">
+                    Sí. Nuestro equipo farmacéutico brinda orientación general
+                    sobre el uso adecuado de los medicamentos. Recuerda que
+                    esta orientación no reemplaza la consulta médica.
+                </div>
+            </div>
+
+            <div class="pregunta">
+                <div class="pregunta-titulo">
+                    ¿Cuáles son los métodos de pago disponibles?
+                    <span>+</span>
+                </div>
+                <div class="pregunta-respuesta">
+                    Aceptamos efectivo, tarjetas débito y crédito, y pagos
+                    por transferencia bancaria. Para pedidos a domicilio
+                    puedes pagar al momento de la entrega.
+                </div>
+            </div>
+
+            <div class="pregunta">
+                <div class="pregunta-titulo">
+                    ¿Cómo puedo hacer una sugerencia o reclamo?
+                    <span>+</span>
+                </div>
+                <div class="pregunta-respuesta">
+                    Puedes enviarnos tu sugerencia o reclamo a través del
+                    formulario de soporte de esta página o directamente
+                    en nuestra farmacia. Tu opinión nos ayuda a mejorar.
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE SOPORTE -->
+    <section class="soporte">
+        <h2 class="titulo">Formulario de Soporte</h2>
+        <p class="subtitulo">
+            Completa el siguiente formulario y nuestro equipo te contactará
+            lo antes posible para ayudarte.
+        </p>
+
+        <form class="formulario-soporte" onsubmit="enviarSoporte(event)">
+
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" placeholder="Escribe tu nombre" required>
+
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" placeholder="ejemplo@correo.com" required>
+
+            <label for="telefono">Teléfono de contacto</label>
+            <input type="tel" id="telefono" placeholder="300 000 0000" required>
+
+            <label for="tipo">Tipo de solicitud</label>
+            <select id="tipo" required>
+                <option value="">Selecciona una opción</option>
+                <option value="pedido">Estado de pedido o domicilio</option>
+                <option value="medicamento">Disponibilidad de medicamento</option>
+                <option value="orientacion">Orientación farmacéutica</option>
+                <option value="sugerencia">Sugerencia o reclamo</option>
+                <option value="otro">Otro</option>
+            </select>
+
+            <label for="mensaje">Descripción de tu solicitud</label>
+           

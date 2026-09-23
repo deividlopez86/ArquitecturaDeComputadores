@@ -92,7 +92,7 @@
             border-radius: 6px;
             text-decoration: none;
             font-weight: bold;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s;
         }
 
         .boton:hover {
@@ -169,7 +169,6 @@
             display: block;
         }
 
-        /* ---------- NUEVA SECCIÓN DE CONTENIDO / NOVEDADES ---------- */
         .contenido {
             background-color: #ffffff;
         }
@@ -221,7 +220,6 @@
             border-radius: 20px;
             margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
             align-self: flex-start;
         }
 
@@ -254,15 +252,12 @@
             font-weight: bold;
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.3s;
         }
 
         .leer-mas:hover {
             color: #106d57;
             text-decoration: underline;
         }
-
-        /* ---------------------------------------------------------- */
 
         .contacto {
             background-color: #eaf5f2;
@@ -349,11 +344,12 @@
         </div>
 
         <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#nosotros">Nosotros</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#contenido">Contenido</a>
-            <a href="#contacto">Contacto</a>
+            <a href="index.html#inicio">Inicio</a>
+            <a href="index.html#nosotros">Nosotros</a>
+            <a href="index.html#servicios">Servicios</a>
+            <a href="index.html#contenido">Contenido</a>
+            <a href="mesadeayuda.html">Mesa de Ayuda</a>
+            <a href="index.html#contacto">Contacto</a>
         </nav>
     </header>
 
@@ -428,7 +424,6 @@
         </div>
     </section>
 
-    <!-- ================= NUEVA SECCIÓN DE CONTENIDO ================= -->
     <section class="contenido" id="contenido">
         <h2 class="titulo">Contenido y Novedades</h2>
         <p class="subtitulo">
@@ -530,7 +525,6 @@
 
         </div>
     </section>
-    <!-- ============================================================= -->
 
     <section class="contacto" id="contacto">
         <h2 class="titulo">Contacto</h2>
@@ -544,13 +538,9 @@
 
         <form class="formulario" onsubmit="enviarFormulario(event)">
             <input type="text" placeholder="Nombre completo" required>
-
             <input type="email" placeholder="Correo electrónico" required>
-
             <input type="text" placeholder="Asunto" required>
-
             <textarea placeholder="Escriba su mensaje..." required></textarea>
-
             <button type="submit">Enviar mensaje</button>
         </form>
     </section>
