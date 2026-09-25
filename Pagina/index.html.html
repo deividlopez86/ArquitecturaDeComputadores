@@ -38,6 +38,15 @@
             color: #168c70;
             font-size: 25px;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
         }
 
         nav a {
@@ -83,6 +92,11 @@
             border-radius: 6px;
             text-decoration: none;
             font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .boton:hover {
+            background-color: #eaf5f2;
         }
 
         section {
@@ -94,6 +108,17 @@
             color: #168c70;
             font-size: 32px;
             margin-bottom: 20px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 45px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
         }
 
         .texto {
@@ -123,6 +148,12 @@
             text-align: center;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
         }
 
         .tarjeta h3 {
@@ -130,9 +161,108 @@
             margin: 15px 0;
         }
 
-        .icono {
-            font-size: 40px;
+        .tarjeta .icono-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin: 0 auto 10px;
+            display: block;
         }
+
+        /* ---------- NUEVA SECCIÓN DE CONTENIDO / NOVEDADES ---------- */
+        .contenido {
+            background-color: #ffffff;
+        }
+
+        .contenedor-contenido {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .articulo {
+            background-color: #f5f8f7;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .articulo:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+        }
+
+        .articulo img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .articulo-contenido {
+            padding: 22px 20px 25px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .categoria {
+            display: inline-block;
+            background-color: #d9f0ea;
+            color: #168c70;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            align-self: flex-start;
+        }
+
+        .articulo h3 {
+            color: #146b58;
+            font-size: 19px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .articulo p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #555;
+            flex: 1;
+        }
+
+        .fecha {
+            display: block;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #888;
+            font-style: italic;
+        }
+
+        .leer-mas {
+            display: inline-block;
+            margin-top: 14px;
+            color: #168c70;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .leer-mas:hover {
+            color: #106d57;
+            text-decoration: underline;
+        }
+
+        /* ---------------------------------------------------------- */
 
         .contacto {
             background-color: #eaf5f2;
@@ -168,6 +298,7 @@
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         .formulario button:hover {
@@ -201,6 +332,10 @@
             .inicio h1 {
                 font-size: 35px;
             }
+
+            .contenedor-contenido {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -208,12 +343,16 @@
 <body>
 
     <header>
-        <div class="logo">💊 Farmacia SaludVida</div>
+        <div class="logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/2966/2966327.png" alt="Logo Farmacia SaludVida">
+            Farmacia SaludVida
+        </div>
 
         <nav>
             <a href="#inicio">Inicio</a>
             <a href="#nosotros">Nosotros</a>
             <a href="#servicios">Servicios</a>
+            <a href="#contenido">Contenido</a>
             <a href="#contacto">Contacto</a>
         </nav>
     </header>
@@ -251,7 +390,7 @@
         <div class="contenedor-servicios">
 
             <div class="tarjeta">
-                <div class="icono">💊</div>
+                <img class="icono-img" src="https://cdn-icons-png.flaticon.com/512/2966/2966327.png" alt="Medicamentos">
                 <h3>Venta de medicamentos</h3>
                 <p>
                     Disponemos de medicamentos y productos farmacéuticos
@@ -260,7 +399,7 @@
             </div>
 
             <div class="tarjeta">
-                <div class="icono">🩺</div>
+                <img class="icono-img" src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png" alt="Orientación farmacéutica">
                 <h3>Orientación farmacéutica</h3>
                 <p>
                     Brindamos información general sobre el uso adecuado
@@ -269,7 +408,7 @@
             </div>
 
             <div class="tarjeta">
-                <div class="icono">🏠</div>
+                <img class="icono-img" src="https://cdn-icons-png.flaticon.com/512/2830/2830305.png" alt="Domicilios">
                 <h3>Domicilios</h3>
                 <p>
                     Realizamos entregas de productos en nuestra zona
@@ -278,7 +417,7 @@
             </div>
 
             <div class="tarjeta">
-                <div class="icono">❤️</div>
+                <img class="icono-img" src="https://cdn-icons-png.flaticon.com/512/2966/2966486.png" alt="Cuidado personal">
                 <h3>Cuidado personal</h3>
                 <p>
                     Productos de higiene, cuidado personal y bienestar
@@ -289,14 +428,118 @@
         </div>
     </section>
 
+    <!-- ================= NUEVA SECCIÓN DE CONTENIDO ================= -->
+    <section class="contenido" id="contenido">
+        <h2 class="titulo">Contenido y Novedades</h2>
+        <p class="subtitulo">
+            Descubre artículos, consejos y noticias sobre salud, medicamentos
+            y bienestar elaborados por nuestro equipo farmacéutico.
+        </p>
+
+        <div class="contenedor-contenido">
+
+            <article class="articulo">
+                <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80" alt="Uso responsable de medicamentos">
+                <div class="articulo-contenido">
+                    <span class="categoria">Salud</span>
+                    <h3>Uso responsable de los medicamentos</h3>
+                    <p>
+                        Aprende a identificar la dosis adecuada, los horarios
+                        y las precauciones que debes tener en cuenta al
+                        consumir cualquier medicamento.
+                    </p>
+                    <span class="fecha">Publicado el 12 de marzo, 2026</span>
+                    <a href="#" class="leer-mas">Leer más →</a>
+                </div>
+            </article>
+
+            <article class="articulo">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Vitaminas y sistema inmune">
+                <div class="articulo-contenido">
+                    <span class="categoria">Bienestar</span>
+                    <h3>Vitaminas esenciales para fortalecer tu sistema inmune</h3>
+                    <p>
+                        Conoce cuáles son las vitaminas y minerales que
+                        contribuyen a mantener tus defensas altas durante
+                        todo el año.
+                    </p>
+                    <span class="fecha">Publicado el 5 de marzo, 2026</span>
+                    <a href="#" class="leer-mas">Leer más →</a>
+                </div>
+            </article>
+
+            <article class="articulo">
+                <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=800&q=80" alt="Primeros auxilios en casa">
+                <div class="articulo-contenido">
+                    <span class="categoria">Prevención</span>
+                    <h3>Botiquín básico de primeros auxilios en casa</h3>
+                    <p>
+                        Te contamos qué elementos no pueden faltar en tu
+                        botiquín familiar y cómo mantenerlos en óptimas
+                        condiciones.
+                    </p>
+                    <span class="fecha">Publicado el 28 de febrero, 2026</span>
+                    <a href="#" class="leer-mas">Leer más →</a>
+                </div>
+            </article>
+
+            <article class="articulo">
+                <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=800&q=80" alt="Cuidado de la piel">
+                <div class="articulo-contenido">
+                    <span class="categoria">Cuidado personal</span>
+                    <h3>Rutina diaria para el cuidado de la piel</h3>
+                    <p>
+                        Descubre los pasos básicos para mantener una piel
+                        sana y protegida, con productos disponibles en
+                        nuestra farmacia.
+                    </p>
+                    <span class="fecha">Publicado el 20 de febrero, 2026</span>
+                    <a href="#" class="leer-mas">Leer más →</a>
+                </div>
+            </article>
+
+            <article class="articulo">
+                <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=800&q=80" alt="Consulta farmacéutica">
+                <div class="articulo-contenido">
+                    <span class="categoria">Servicios</span>
+                    <h3>¿Cuándo acudir a una consulta farmacéutica?</h3>
+                    <p>
+                        Conoce las situaciones en las que nuestro equipo
+                        profesional puede orientarte sobre el uso correcto
+                        de tus tratamientos.
+                    </p>
+                    <span class="fecha">Publicado el 14 de febrero, 2026</span>
+                    <a href="#" class="leer-mas">Leer más →</a>
+                </div>
+            </article>
+
+            <article class="articulo">
+                <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80" alt="Alimentación saludable">
+                <div class="articulo-contenido">
+                    <span class="categoria">Nutrición</span>
+                    <h3>Alimentación saludable para toda la familia</h3>
+                    <p>
+                        Consejos prácticos para incorporar hábitos
+                        alimenticios que beneficien tu salud y la de
+                        tus seres queridos.
+                    </p>
+                    <span class="fecha">Publicado el 8 de febrero, 2026</span>
+                    <a href="#" class="leer-mas">Leer más →</a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+    <!-- ============================================================= -->
+
     <section class="contacto" id="contacto">
         <h2 class="titulo">Contacto</h2>
 
         <div class="informacion">
-            <p>📍 Dirección: Calle 10 # 15-20</p>
-            <p>📞 Teléfono: 300 123 4567</p>
-            <p>📧 Correo: contacto@saludvida.com</p>
-            <p>🕒 Horario: Lunes a sábado, 8:00 AM - 8:00 PM</p>
+            <p>Dirección: Calle 10 # 15-20</p>
+            <p>Teléfono: 300 123 4567</p>
+            <p>Correo: contacto@saludvida.com</p>
+            <p>Horario: Lunes a sábado, 8:00 AM - 8:00 PM</p>
         </div>
 
         <form class="formulario" onsubmit="enviarFormulario(event)">
